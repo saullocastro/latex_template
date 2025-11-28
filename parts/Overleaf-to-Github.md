@@ -1,4 +1,4 @@
-# Using Jupyter Book with Overleaf, Visual Studio Code and GitHub Pages
+# Using Jupyter Book with Overleaf, Visual Studio Code and GitHub Pages (temporary)
 
 If you want your Overleaf LaTeX project to build automatically into a polished, interactive website and also integrate Python scripts and visualizations developed in VS Code, combining Jupyter Book with GitHub Pages provides a seamless way to turn your work into a continuously updated, professionally hosted site.
 
@@ -20,7 +20,7 @@ The steps below guide you through configuring your local environment, linking Ov
 
 1) Open your Overleaf project.
 2) Go to Menu > Integrations > GitHub.
-![image of overleaf ](./images/image2.png)
+![image of overleaf ](images/Overleaf_integrations_screenshot.png)
 3) Select `Create GitHub Repository`. Overleaf will generate a new repository and link your project to it. 
 
 You now have a GitHub repo containing your LaTeX files, ready to clone to your local machine. 

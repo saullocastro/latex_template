@@ -1,0 +1,33 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 90e47c20-77c7-4be2-84e1-248c166d3fad
+  # description:
+  # keywords: []
+  authors: [Name Student, Name Supervisor]
+  github: https://github.com/TUD-JB-OS/latex_template
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+  toc:
+    - file: project.md
+    - file: Notebooks/data-analysis.ipynb
+
+  bibliography:
+    - references.bib
+
+  downloads:
+    - id: tud-thesis-export
+  
+  exports:
+    - format: pdf 
+      output: exports/notebooks.pdf  # change name of output file here
+      # template: Template
+
+  
+    
+site:
+  template: article-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+
+
