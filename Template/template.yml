@@ -1,20 +1,20 @@
 jtex: v1
-title: Curvenote Default
+title: TUD LaTeX thesis template
 description: >-
-  A paper styled template using the custom environments and styling to match
-  Curvenote Web
+  A basic, paper styled template for TUD Bachelor and Master thesis
 authors:
-  - name: Steve Purves
-    github: curvenote
-    twitter: curvenote
+  - name: Freek Pols
     affiliations:
-      - Curvenote
-version: 0.2.1
+      - Delft University of Technology
+  - name: Luuk Fröling
+    affiliations:
+      - Delft University of Technology
+
+version: 0.0.1
 license: CC-BY-4.0
 tags:
-  - article
   - paper
-github: https://github.com/curvenote/templates/tree/main/latex/default
+github: https://github.com/TUD-JB-OS/latex_template
 doc:
   - id: title
     required: true
