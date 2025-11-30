@@ -12,6 +12,7 @@ authors:
 
 version: 0.0.1
 license: CC-BY-4.0
+attribution: "This template has been adapted from Curvenote: https://github.com/myst-templates/curvenote"
 tags:
   - paper
 github: https://github.com/TUD-JB-OS/latex_template
