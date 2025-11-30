@@ -2,7 +2,7 @@
 
 ## Overview 
 
-This repository provides a latex template for creating JB2 (Jupyter Book 2) books using MyST Markdown, specifically configured for bachelor’s and master’s thesis layouts. {todo: these will probably look different, different repos?}
+This repository provides a LaTeX template for creating JB2 (Jupyter Book 2) books using MyST Markdown, specifically configured for bachelor’s and master’s thesis layouts. {todo: these will probably look different, different repos?}
 
 Folders in this repository:
 
@@ -16,8 +16,8 @@ Folders in this repository:
 ### Different formats 
 
 JupyterBook supports producing your report in multiple formats, including:
-- <b> web-based format: </b> Ideal for online reading, interactive content and sharing with supervisors and collaborators. An example can be seen [here](https://luukfroling.github.io/BEP/)
-- <b> PDF format: </b> Suitable for official submission and printing. This repository focuses on providing a template specifically designed for the PDF format. 
+- **web-based format:** Ideal for online reading, interactive content and sharing with supervisors and collaborators. An example can be seen [here](https://luukfroling.github.io/BEP/)
+- **PDF format:** Suitable for official submission and printing. This repository focuses on providing a template specifically designed for the PDF format. 
 
 ## How to use this template
 
@@ -37,9 +37,7 @@ Make sure the following are installed:
 ### Install Jupyter Book
 
 Start by installing Jupyter Book: 
-:::{code}
-pip install "jupyter-book>=2.0.0a0"
-:::
+`pip install "jupyter-book>=2.0.0a0"`
 
 ### Create repository
 
@@ -51,7 +49,7 @@ This enables automatic building and publishing of the web-based version of your 
 
 ### View web-based book locally
 
-1) Clone the new repository to your device using Github Desktop (or Git). Using the dekstop version, go to clone repository > your repositories > {new repository name}. 
+1) Clone the new repository to your device using Github Desktop (or Git). Using the desktop version, go to clone repository > your repositories > {new repository name}. 
 2) Open the project in an editor of choice. 
 3) In a terminal, use `jupyter book start` and navigate to http://localhost:3000/ in your browser. 
 
@@ -66,13 +64,11 @@ Changes you make in the editor will automatically refresh in the local web previ
 
 To produce a PDF: 
 
-```{code} 
-jupyter book build --pdf
-```
+`jupyter book build --pdf`
 
 You can configure the output name and location in your myst.yml file:
 
-```{code}
+```{code} yml
 :emphasize-lines: 3
 
 exports:
