@@ -22,8 +22,6 @@ project:
     - format: pdf 
       output: exports/notebooks.pdf  # change name of output file here
       template: Template
-
-  
     
 site:
   template: article-theme

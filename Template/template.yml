@@ -2,7 +2,7 @@ jtex: v1
 # attribution: "This template has been adapted from Curvenote: https://github.com/myst-templates/curvenote"
 title: TUD LaTeX thesis template
 description: >-
-  A basic, paper styled template for TUD Bachelor and Master thesis
+  A basic, latex based, paper styled template for TUD Bachelor and Master thesis
 authors:
   - name: Freek Pols
     affiliations:
