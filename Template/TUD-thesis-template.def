@@ -1,5 +1,6 @@
 
-% Start Curvenote Definitions
+
+% TUD thesis template, using Curvenote-derived Definitions
 
 % Pass Options Section
 % base
@@ -56,4 +57,4 @@
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear,open={(},close={)},semicolon,aysep={,}}
 
-% End Curvenote Definitions
+% End Definitions

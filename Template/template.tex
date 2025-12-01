@@ -1,7 +1,7 @@
 \documentclass{article}
 \PassOptionsToPackage{short, nodayofweek}{datetime}
 
-\input{curvenote.def}
+\input{TUD-thesis-template.def}
 
 [-IMPORTS-]
 
@@ -13,10 +13,18 @@
   pdfsubject={[-doc.description-]},
   pdfauthor={\@author},
   pdfkeywords={[-doc.tags-]},
-  addtopdfcreator={Written in Curvenote}
+  addtopdfcreator={written using the TU Delft Thesis Template}
 }
 
-\usepackage{curvenote}
+% Use \replaceBS to replace backslashes in file paths with forward slashes. 
+% solution from https://tex.stackexchange.com/questions/213779/replace-every-backslash-in-a-string-with-a-forwardslash 
+
+\makeatletter
+\newcommand{\replaceBS}[2]{{\escapechar=`/ 
+  \xdef#2{\expandafter\zap@space\detokenize\expandafter{#1} \@empty}}}
+\makeatother
+
+\usepackage{TUD-thesis-template}
 
 \usepackage{etoolbox}
 % Flag to skip the first \section (before abstract)
@@ -41,6 +49,8 @@
 }{%
   \endoldfigure%
 }
+
+\replaceBS{[-options.cover-]}{\newCovername}
 
 \title{[-doc.title-]}
 
@@ -68,10 +78,17 @@ author: [-doc.authors[0].name-]%
 [# endif #]
 }}
 
-
 \begin{document}
 
+
 \maketitle
+\vfill
+[# if options.cover #]
+  \begin{center}
+    \includegraphics[width=0.9\linewidth]{\newCovername}
+  \end{center}
+[# endif #]
+\vfill
 \newpage
 [# if parts.abstract -#]
 \begin{abstract}

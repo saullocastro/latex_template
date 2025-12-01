@@ -10,6 +10,7 @@ export:
   - format: pdf
     output: exports/thesis.pdf
     template: Template
+    cover: cover.png
     id: tud-thesis-export
 ---
 

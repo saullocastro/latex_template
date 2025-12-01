@@ -33,6 +33,10 @@ options:
     type: string
     description: |
       Link to the article online as a footnote on the first page
+  - id: cover
+    type: file
+    description: |
+      Path to an optional image for the title page (e.g. "images/front.png")
 parts:
   - id: abstract
     description: >
@@ -53,8 +57,8 @@ parts:
       a subtitle - Acknowledgments.
 files:
   - template.tex
-  - curvenote.def
-  - curvenote.sty
+  - TUD-thesis-template.def
+  - TUD-thesis-template.sty
 packages:
   - adjustbox
   - amsfonts
@@ -62,7 +66,6 @@ packages:
   - amssymb
   - babel
   - booktabs
-  - curvenote
   - datetime
   - doi
   - enumitem
@@ -84,3 +87,4 @@ packages:
   - url
   - xcolor
   - xkeyval
+  - xstring
