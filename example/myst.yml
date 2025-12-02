@@ -2,17 +2,17 @@
 version: 1
 project:
   id: 90e47c20-77c7-4be2-84e1-248c166d3fad
-  # description:
-  # keywords: []
+  title: Title of thesis
   authors: [Name Student, Name Supervisor]
   github: https://github.com/TUD-JB-OS/latex_template
   date: 2025-30-11
   toc:
     - file: project.md
-    - file: Notebooks/data-analysis.ipynb
+    - file: notebooks/data-analysis.ipynb
+    - file: notebooks/data-collection.ipynb
 
   bibliography:
-    - references.bib
+    - references/references.bib
 
   downloads:
     - id: tud-thesis-export
@@ -20,11 +20,15 @@ project:
   exports:
     - format: pdf 
       output: exports/notebooks.pdf  # change name of output file here
-      template: Template
+      template: ../
       cover: cover.png
+      extra_information: >
+        University \\ 
+        Study area \\ 
+        Thesis
     
-site:
-  template: article-theme
+# site:
+#   template: article-theme
   # options:
   #   favicon: favicon.ico
   #   logo: site_logo.png

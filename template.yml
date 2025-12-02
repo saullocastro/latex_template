@@ -33,10 +33,58 @@ options:
     type: string
     description: |
       Link to the article online as a footnote on the first page
+  
+  # TOC settings
+  - id: showTOC
+    type: boolean
+    default: true
+    description: |
+      Whether to show the table of contents after the title page
+  - id: tocDepth
+    type: number
+    default: 2
+    description: |
+      The depth of the table of contents (e.g. 2 for sections and subsections) 
+
+  # Cover image settings
   - id: cover
     type: file
     description: |
       Path to an optional image for the title page (e.g. "images/front.png")
+  - id: cover_width
+    type: string
+    default: "0.9\\linewidth"
+    description: |
+      Width of the cover image (e.g. "8cm" for 8 centimeters, "0.9\linewidth" for 90% of the line width)
+  - id: cover_margin
+    type: string
+    default: "2em"
+    description: |
+      Vertical space between the title and the cover image (e.g. "2em" for 2em)
+
+  # Logo settings
+  - id: logo
+    type: file
+    description: |
+      Path to an optional logo image to be placed at the top of each page
+  - id: logo_width
+    type: string
+    default: "5cm"
+    description: |
+      Width of the logo image in cm (e.g. "10" for 10cm)
+
+  # Page settings
+
+
+  # Extra information
+  - id: extra_information
+    type: string
+    default: "\u00A0" # space character
+    description: |
+      Extra information to be placed on the title page (e.g. "Version 2.0,
+      Draft, university, course")
+
+
 parts:
   - id: abstract
     description: >

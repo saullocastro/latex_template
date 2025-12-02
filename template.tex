@@ -24,7 +24,36 @@
   \xdef#2{\expandafter\zap@space\detokenize\expandafter{#1} \@empty}}}
 \makeatother
 
+% Cover image width
+\newcommand{\CoverWidth}{[- options.cover_width -]} % Set default
+
+% Default cover margin (vertical space between title and cover image)
+\newcommand{\CoverMargin}{[- options.cover_margin -]} % Set default
+
+% ---- Logo settings (from template options) ----
+\newif\ifThesisLogo
+\ThesisLogofalse          % default: no logo
+
+\newcommand{\ThesisLogo}{}      % path after normalization
+\newcommand{\ThesisLogoWidth}{10mm}
+
+% If a logo is provided in options, normalize its path and enable the flag
+[# if options.logo is defined #]
+  \ThesisLogotrue
+  \newcommand{\newLogoname}{}%
+  \replaceBS{[-options.logo-]}{\newLogoname}
+  \renewcommand{\ThesisLogo}{\newLogoname}
+[# endif #]
+
+% logo width, default is 5 cm
+\renewcommand{\ThesisLogoWidth}{[- options.logo_width -]}
+
+% Extra information on title page
+\newcommand{\ThesisExtraInfo}{ [- options.extra_information -]}
+
+
 \usepackage{TUD-thesis-template}
+
 
 \usepackage{etoolbox}
 % Flag to skip the first \section (before abstract)
@@ -54,16 +83,6 @@
 
 \title{[-doc.title-]}
 
-% ---- USER CUSTOMIZATION BLOCK ----
-\newcommand{\ThesisExtraInfo}{
-    % Add thesis information here (edit freely):
-    Type of thesis\\
-    Program Name\\
-    University Name
-}
-% ----------------------------------
-
-
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{%
   \ThesisExtraInfo\\[1.5em]
@@ -83,13 +102,18 @@ author: [-doc.authors[0].name-]%
 
 \maketitle
 \vfill
+
 [# if options.cover #]
+  \vspace*{\CoverMargin} % margin from the title
   \begin{center}
-    \includegraphics[width=0.9\linewidth]{\newCovername}
+    \includegraphics[width=\CoverWidth]{\newCovername}
   \end{center}
 [# endif #]
+
 \vfill
+
 \newpage
+
 [# if parts.abstract -#]
 \begin{abstract}
 [-parts.abstract-]
@@ -98,6 +122,20 @@ author: [-doc.authors[0].name-]%
 [#- endif -#]
 [#- if doc.keywords -#]
 \keywords{[-doc.keywords|join(", ")-]}
+[# endif #]
+
+% Default TOC depth
+\setcounter{tocdepth}{2}
+
+% Override via template variable
+[# if options.tocDepth is defined #]
+  \setcounter{tocdepth}{[- options.tocDepth -]}
+[# endif #]
+
+[# if options.showTOC #]
+\clearpage
+\tableofcontents
+\clearpage
 [# endif #]
 
 [-CONTENT-]

@@ -1,0 +1,55 @@
+version: 1
+project:
+
+  # Add download to page by specifying the ID:
+  downloads:
+    - id: output-pdf
+
+  # Define export settings
+  exports:
+    - id: output-pdf                # ID of the export, to be used for download
+      format: pdf                 # Define type of export (--pdf flag uses latex)
+      template: ../                 # Template to be used 
+      output: ./exports/thesis.pdf  # Specify output path (name) here
+
+      # Cover image settings
+      cover: Cover.png
+      coverposition: 5              #in cm from title
+      cover_width: 8                #in cm
+
+      # ToC
+      tocDepth: 2
+      showTOC: true
+
+      # Cover
+      cover: cover.png
+      cover_width: 0.5\\linewidth
+
+      # Logo
+      logo: cover.png
+      logo_width: 5cm
+
+
+      ## TODO - look at these
+
+#       #### Looks
+#       papersize: a4
+#       margin_top: 2 #cm
+#       margin_bottom: 2 #cm
+#       margin_left: 10 #%
+#       margin_right: 10 #%
+#       show_pagenumber: true
+
+#       #### Fonts
+#       fontsize: 12
+#       fontstyle: 
+#       linespacing: .5
+#       justification: false
+      
+#       #### Theme
+#       colortheme: blue.darken(30%)
+#       colorheadings: navy
+      
+# # Preface
+#       preface: This is a test for the plain_typst_book template. As example, we include a part of a chapter of a JB2 book used at Delft, University of Technology.       
+      

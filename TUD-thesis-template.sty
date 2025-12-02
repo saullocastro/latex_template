@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{curvenote}[2021/05/18 Curvenote Default Format]
+\ProvidesPackage{TUD-thesis-template}[TUD Thesis Template]
 
 \PassOptionsToPackage{english}{babel}
 \PassOptionsToPackage{babel=true}{microtype}
@@ -48,10 +48,23 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyheadoffset{0pt}
-\rhead{\scshape \footnotesize \headeright}
-\chead{\shorttitle}
-\cfoot{\thepage}
 
+
+% --- Left header: Logo if provided ---
+\lhead{%
+  \ifThesisLogo
+    \raisebox{-0.2\height}{\includegraphics[width=\ThesisLogoWidth]{\ThesisLogo}}%
+  \fi
+}
+
+% --- Center header: short title ---
+\chead{\shorttitle}
+
+% --- Right header: existing header text ---
+\rhead{\scshape \footnotesize \headeright}
+
+% Footer
+\cfoot{\thepage}
 
 %Handling Keywords
 \def\keywordname{{\bfseries \emph{Keywords}}}%

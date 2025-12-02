@@ -1,5 +1,5 @@
 ---
-title: "Title of thesis"
+title: Title of thesis
 short_title: Written by [...]
 description: description of thesis
 authors: [name student, name supervisor]
@@ -9,9 +9,10 @@ abstract: |
 export:
   - format: pdf
     output: exports/thesis.pdf
-    template: Template
-    cover: cover.png
+    template: ../
     id: tud-thesis-export
+    cover: cover.png
+    logo: cover.png
 ---
 
 ```{include} parts/02-introduction.md
