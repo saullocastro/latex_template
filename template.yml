@@ -69,12 +69,49 @@ options:
       Path to an optional logo image to be placed at the top of each page
   - id: logo_width
     type: string
-    default: "5cm"
+    default: "1cm"
     description: |
       Width of the logo image in cm (e.g. "10" for 10cm)
 
   # Page settings
+  - id: margin_top
+    type: string
+    default: "2.5cm"
+    description: |
+      Top margin of the page (e.g. "2.5cm" for 2.5 centimeters)
+  - id: margin_bottom
+    type: string
+    default: "2.5cm"
+    description: |
+      Bottom margin of the page (e.g. "2.5cm" for 2.5 centimeters)
+  - id: margin_left
+    type: string
+    default: "2.5cm"
+    description: |
+      Left margin of the page (e.g. "2.5cm" for 2.5 centimeters)
+  - id: margin_right
+    type: string
+    default: "2.5cm"
+    description: |
+      Right margin of the page (e.g. "2.5cm" for 2.5 centimeters)
 
+  - id: papersize
+    type: string
+    default: "a4paper"
+    description: |
+      Paper size to be used (e.g. "a4" for A4 paper)
+  
+  - id: show_pagenumbers
+    type: string
+    default: roman
+    description: |
+      Whether to show page numbers in the footer
+  
+  - id: fontsize
+    type: number
+    default: 20
+    description: |
+      Font size to be used throughout the document (e.g. 12 for 12pt)
 
   # Extra information
   - id: extra_information

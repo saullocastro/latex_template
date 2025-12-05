@@ -3,7 +3,7 @@
 
 \PassOptionsToPackage{english}{babel}
 \PassOptionsToPackage{babel=true}{microtype}
-\PassOptionsToPackage{verbose=true,letterpaper}{geometry}
+\PassOptionsToPackage{verbose=true,\paperSize}{geometry}
 
 
 \usepackage{xkeyval}
@@ -31,7 +31,10 @@
   \newgeometry{
     textheight=9in,
     textwidth=6.5in,
-    top=1in,
+    top=\marginTop,
+    bottom=\marginBottom,
+    left=\marginLeft,
+    right=\marginRight,
     headheight=14pt,
     headsep=25pt,
     footskip=30pt

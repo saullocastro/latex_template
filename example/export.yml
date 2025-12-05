@@ -8,40 +8,40 @@ project:
   # Define export settings
   exports:
     - id: output-pdf                # ID of the export, to be used for download
-      format: pdf                 # Define type of export (--pdf flag uses latex)
+      format: pdf                   # Define type of export (--pdf flag uses latex)
       template: ../                 # Template to be used 
       output: ./exports/thesis.pdf  # Specify output path (name) here
 
+      # can be used later
+      # articles:
+      #   - file: parts/02-introduction.md
+      #   - file: parts/03-theory.md
+      #   - file: notebooks/data-analysis.ipynb
+      #   - file: notebooks/data-collection.ipynb
+
       # Cover image settings
-      cover: Cover.png
-      coverposition: 5              #in cm from title
-      cover_width: 8                #in cm
+      cover: cover.png
+      cover_margin: "2em"
+      cover_width: "0.8\\linewidth"
 
       # ToC
       tocDepth: 2
       showTOC: true
 
-      # Cover
-      cover: cover.png
-      cover_width: 0.5\\linewidth
-
       # Logo
       logo: cover.png
-      logo_width: 5cm
+      logo_width: 1cm
 
-
-      ## TODO - look at these
-
-#       #### Looks
-#       papersize: a4
-#       margin_top: 2 #cm
-#       margin_bottom: 2 #cm
-#       margin_left: 10 #%
-#       margin_right: 10 #%
-#       show_pagenumber: true
+      # layout
+      papersize: a4paper
+      margin_top: 2.5cm
+      margin_bottom: 2.5cm
+      margin_left: 2.5cm
+      margin_right: 2.5cm
+      show_pagenumber: arabic
 
 #       #### Fonts
-#       fontsize: 12
+      fontsize: 2
 #       fontstyle: 
 #       linespacing: .5
 #       justification: false

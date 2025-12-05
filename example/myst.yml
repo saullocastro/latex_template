@@ -14,23 +14,13 @@ project:
   bibliography:
     - references/references.bib
 
-  downloads:
-    - id: tud-thesis-export
+  # downloads:
+  #   - id: tud-thesis-export
   
-  exports:
-    - format: pdf 
-      output: exports/notebooks.pdf  # change name of output file here
-      template: ../
-      cover: cover.png
-      extra_information: >
-        University \\ 
-        Study area \\ 
-        Thesis
+extends:
+  - export.yml
     
-# site:
-#   template: article-theme
-  # options:
-  #   favicon: favicon.ico
-  #   logo: site_logo.png
+site:
+  template: article-theme
 
 
