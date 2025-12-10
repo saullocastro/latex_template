@@ -11,7 +11,6 @@ JupyterBook supports producing your report in multiple formats, including:
 Add the following code to the `myst.yml` file: 
 
 ```{code} yml
-:emphasize-lines: 3
 
 downloads:
     - id: output-pdf

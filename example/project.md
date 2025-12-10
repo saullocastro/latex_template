@@ -13,6 +13,7 @@ export:
     id: tud-thesis-export
     cover: cover.png
     logo: cover.png
+    show_pagenumbers: arabic
 ---
 
 ```{include} parts/02-introduction.md

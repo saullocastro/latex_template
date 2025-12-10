@@ -11,7 +11,6 @@ This repository provides a LaTeX template for creating JB2 (Jupyter Book 2) book
 Add the following code to the `myst.yml` file: 
 
 ```{code} yml
-:emphasize-lines: 3
 
 downloads:
     - id: output-pdf
@@ -43,3 +42,5 @@ The first two pages show to general layout of the template:
 </td>
 </tr>
 </table>
+
+The table of contents can be turned off via the settings in `export.yml`.
