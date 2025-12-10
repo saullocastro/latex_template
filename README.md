@@ -1,8 +1,8 @@
 # Jupyter Book Latex template for thesis
 
-<p align="center">
-  <img src="images/front-page.png" alt="front page image" width="50%" style="border: 1px solid black;" />
-</p>
+<div align="center">
+  <img src="images/front-page.png" width="50%">
+</div>
 
 This repository provides a LaTeX template for creating JB2 (Jupyter Book 2) books using MyST Markdown, specifically configured for bachelor’s and master’s thesis layouts.
 
@@ -33,7 +33,13 @@ There are multiple additional settings which can be used to further customise th
 
 The first two pages show to general layout of the template:
 
-<p>
-  <img src="images/front-page.png" alt="front page image" width="48%" style="border: 1px solid black; margin-right: 10px;" />
-  <img src="images/table-of-contents.png" alt="ToC image" width="48%" style="border: 1px solid black;" />
-</p>
+<table>
+<tr>
+<td style="border: 1px solid black; padding: 4px;">
+  <img src="images/front-page.png" alt="front page image" width="400">
+</td>
+<td style="border: 1px solid black; padding: 4px;">
+  <img src="images/table-of-contents.png" alt="ToC image" width="400">
+</td>
+</tr>
+</table>
