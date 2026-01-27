@@ -103,7 +103,7 @@ options:
   
   - id: show_pagenumbers
     type: string
-    default: roman
+    default: arabic
     description: |
       Whether to show page numbers in the footer
   

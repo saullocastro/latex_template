@@ -6,17 +6,18 @@ JupyterBook supports producing your report in multiple formats, including:
 - **web-based format:** Ideal for online reading, interactive content and sharing with supervisors and collaborators. An example can be seen [here](https://luukfroling.github.io/BEP/)
 - **PDF format:** Suitable for official submission and printing. This repository focuses on providing a template specifically designed for the PDF format. 
 
-## How to use this template
+## Using the template
 
-The following instructions will guide you through the process of: 
+Add the following code to the `myst.yml` file: 
 
-- Copying this repository/folder into your own GitHub account
-- Editing your thesis using VS Code (or another editor)
-- Viewing your thesis as a website or as a PDF
-- Adjusting the template to your needs
+```{code} yml
 
-Make sure the following are installed: 
+downloads:
+    - id: output-pdf
 
-- Visual Studio Code (or any editor with a terminal)
-- GitHub Desktop (or Git)
-- Python
+exports:
+    - format: pdf 
+        output: exports/output_file.pdf
+        template: { - TODO: replace with published link - }
+        id: output-pdf
+```
