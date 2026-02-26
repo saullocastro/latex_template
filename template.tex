@@ -126,11 +126,12 @@ author: [-doc.authors[0].name-]%
 \begin{abstract}
 [-parts.abstract-]
 \end{abstract}
-\clearpage
+\vspace{1.5em}
 [#- endif -#]
 [#- if doc.keywords -#]
 \keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
+\clearpage
 
 % Default TOC depth
 \setcounter{tocdepth}{2}
