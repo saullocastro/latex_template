@@ -1,2 +1,7 @@
 _build
 *.pdf
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.synctex.gz
