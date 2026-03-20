@@ -62,8 +62,16 @@
 
 \usepackage{TUD-thesis-template}
 
-% \usepackage{lmodern}
-\renewcommand{\ttdefault}{lmvtt}
+\usepackage{iftex}
+\iftutex
+  % For XeLaTeX / LuaLaTeX (often used by MyST and Tectonic)
+  \usepackage{fontspec}
+  \setmonofont{Latin Modern Mono Prop}
+\else
+  % For pdfLaTeX
+  \usepackage[T1]{fontenc}
+  \renewcommand{\ttdefault}{lmvtt}
+\fi
 
 \usepackage{etoolbox}
 % Flag to skip the first \section (before abstract)
