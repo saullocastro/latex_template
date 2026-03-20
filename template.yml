@@ -16,7 +16,7 @@ license: CC-BY-4.0
 
 tags:
   - paper
-github: https://github.com/TUD-JB-OS/latex_template
+github: https://github.com/saullocastro/latex_template
 doc:
   - id: title
     required: true
