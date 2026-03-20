@@ -87,7 +87,7 @@
 \fancyhf{} % Clear all headers and footers
 
 % Fix marks to include numbers and titles properly
-\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\quad #1}}
 
 % Odd pages: subsection on left, page number on right
@@ -98,6 +98,8 @@
 \fancyhead[ER]{\nouppercase{\leftmark}}
 % Remove footer entirely
 \renewcommand{\footrulewidth}{0pt}
+% Keep header separator line for normal pages
+\renewcommand{\headrulewidth}{0.4pt}
 
 % Style for chapter start pages: only page number in header
 \fancypagestyle{plain}{
@@ -112,11 +114,29 @@
 \newtoggle{skipclearpage}
 \toggletrue{skipclearpage}
 
+% Custom \cleardoublepage to include "intentionally left blank"
+\makeatletter
+\renewcommand*{\cleardoublepage}{%
+  \clearpage
+  \if@twoside
+    \ifodd\c@page\else
+      \vspace*{\fill}%
+      \begin{center}%
+        \textit{This page is intentionally left blank.}%
+      \end{center}%
+      \vspace{\fill}%
+      \thispagestyle{empty}%
+      \newpage%
+    \fi
+  \fi
+}
+\makeatother
+
 \pretocmd{\section}{%
   \iftoggle{skipclearpage}{%
     \global\togglefalse{skipclearpage}%
   }{%
-    \clearpage%
+    \cleardoublepage%
   }%
   \thispagestyle{plain}%
 }{}{}
