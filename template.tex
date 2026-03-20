@@ -66,12 +66,20 @@
 \iftutex
   % For XeLaTeX / LuaLaTeX (often used by MyST and Tectonic)
   \usepackage{fontspec}
-  \setmonofont{Latin Modern Mono Prop}
+  % Use exact file names so Tectonic/XeLaTeX can find them in the TeXLive bundle
+  \setmonofont{lmmonoprop10-regular.otf}[
+    BoldFont=lmmonoproplt10-bold.otf,
+    ItalicFont=lmmonoprop10-oblique.otf,
+    BoldItalicFont=lmmonoproplt10-boldoblique.otf
+  ]
 \else
   % For pdfLaTeX
   \usepackage[T1]{fontenc}
   \renewcommand{\ttdefault}{lmvtt}
 \fi
+
+% Uncomment the line below to apply this font to the ENTIRE document (not just code blocks):
+\renewcommand{\familydefault}{\ttdefault}
 
 \usepackage{etoolbox}
 % Flag to skip the first \section (before abstract)
