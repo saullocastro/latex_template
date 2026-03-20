@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twoside]{article}
 \PassOptionsToPackage{short, nodayofweek}{datetime}
 
 \input{TUD-thesis-template.def}
@@ -82,6 +82,32 @@
 \renewcommand{\familydefault}{\ttdefault}
 
 \usepackage{etoolbox}
+% Setup fancyhdr for custom headers and footers
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers and footers
+
+% Fix marks to include numbers and titles properly
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\quad #1}}
+
+% Odd pages: subsection on left, page number on right
+\fancyhead[OL]{\nouppercase{\rightmark}}
+\fancyhead[OR]{\thepage}
+% Even pages: page number on left, chapter (section) on right
+\fancyhead[EL]{\thepage}
+\fancyhead[ER]{\nouppercase{\leftmark}}
+% Remove footer entirely
+\renewcommand{\footrulewidth}{0pt}
+
+% Style for chapter start pages: only page number in header
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[OR]{\thepage}
+  \fancyhead[EL]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
 % Flag to skip the first \section (before abstract)
 \newtoggle{skipclearpage}
 \toggletrue{skipclearpage}
@@ -92,7 +118,17 @@
   }{%
     \clearpage%
   }%
+  \thispagestyle{plain}%
 }{}{}
+
+% Titlesec for chapter (section) formatting
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\normalfont\Huge\bfseries} % Very large font size
+  {\thesection}
+  {1em}
+  {}
+  [\vspace{1ex}\titlerule\vspace{0.5ex}\titlerule\vspace{2ex}] % Double separator to the start of the text
 
 % Chapter-prefixed equation numbering (e.g., 1.1, 1.2, 2.1, ...)
 \numberwithin{equation}{section}
