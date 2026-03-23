@@ -113,6 +113,7 @@
 %%% Headers & footers
 \pagestyle{fancy}
 \fancyhf{}
+\fancyheadoffset{0pt} % header spans full \textwidth
 
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\quad #1}}
@@ -134,8 +135,8 @@
 }
 
 %%% Sections start on odd pages with "intentionally left blank" filler
-\newtoggle{skipclearpage}
-\toggletrue{skipclearpage}
+\newtoggle{firstsection}
+\toggletrue{firstsection}
 
 \makeatletter
 \renewcommand*{\cleardoublepage}{%
@@ -155,12 +156,14 @@
 }
 \makeatother
 
+% Before every numbered \section: start on odd page, plain style,
+% and switch to arabic numbering on the very first one.
 \pretocmd{\section}{%
-  \iftoggle{skipclearpage}{%
-    \global\togglefalse{skipclearpage}%
-  }{%
-    \cleardoublepage%
-  }%
+  \cleardoublepage%
+  \iftoggle{firstsection}{%
+    \pagenumbering{arabic}%
+    \global\togglefalse{firstsection}%
+  }{}%
   \thispagestyle{plain}%
 }{}{}
 
@@ -193,7 +196,14 @@
 
 \begin{document}
 
-% Title page
+% Cover page (reserved for full-page image)
+\thispagestyle{empty}
+\null
+\newpage
+
+% Title page (odd page)
+\thispagestyle{empty}
+\cleardoublepage
 \begin{titlepage}
   \centering
   \vspace*{\fill}
@@ -205,8 +215,8 @@
   \vspace*{\fill}
 \end{titlepage}
 
-% Front matter
-\pagenumbering{gobble}
+% Front matter (roman numerals)
+\pagenumbering{roman}
 
 [# if parts.abstract -#]
 \begin{abstract}
@@ -226,8 +236,6 @@
 [# endif #]
 
 % Main content
-\cleardoublepage
-\pagenumbering{arabic}
 
 [-CONTENT-]
 
