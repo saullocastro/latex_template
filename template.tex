@@ -1,11 +1,91 @@
 \documentclass[twoside]{article}
-\PassOptionsToPackage{short, nodayofweek}{datetime}
 
-\input{TUD-thesis-template.def}
+%%% Package options (must come before [-IMPORTS-])
+\PassOptionsToPackage{short, nodayofweek}{datetime}
+\PassOptionsToPackage{english}{babel}
+\PassOptionsToPackage{babel=true}{microtype}
+\PassOptionsToPackage{normalem}{ulem}
+\PassOptionsToPackage{utf8}{inputenc}
+\PassOptionsToPackage{x11names, svgnames}{xcolor}
+
+%%% Packages
+\usepackage{inputenc}
+\usepackage{babel}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{float}
+\usepackage{datetime}
+\usepackage{framed}
+\usepackage{doi}
+\usepackage{natbib}
+\usepackage{fancyvrb}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{titlesec}
 
 [-IMPORTS-]
 
-% colors for hyperlinks
+%%% Page settings
+\newcommand{\marginTop}{[- options.margin_top -]}
+\newcommand{\marginBottom}{[- options.margin_bottom -]}
+\newcommand{\marginLeft}{[- options.margin_left -]}
+\newcommand{\marginRight}{[- options.margin_right -]}
+
+\usepackage{geometry}
+\AtBeginDocument{
+  \newgeometry{
+    [- options.papersize -],
+    top=\marginTop,
+    bottom=\marginBottom,
+    left=\marginLeft,
+    right=\marginRight,
+    headheight=14pt,
+    headsep=25pt,
+    footskip=30pt
+  }
+}
+
+%%% Base setup
+\graphicspath{{.}}
+\sloppy
+\raggedbottom
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,open={(},close={)},semicolon,aysep={,}}
+\widowpenalty=10000
+\clubpenalty=10000
+\setlength{\parindent}{\z@}
+\setlength{\parskip}{5.5\p@}
+
+% Callout environment (used by MyST admonitions)
+\newmdenv[linewidth=2pt,linecolor=CornflowerBlue,topline=false,bottomline=false,rightline=false,leftline=true,skipabove=20,skipbelow=20,leftmargin=20,rightmargin=20]{callout}
+\newenvironment{aside}{\begin{framed}}{\end{framed}}
+\newfloat{code}{thp}{loc}
+\floatname{code}{Program}
+
+% Keywords
+\makeatletter
+\def\keywordname{{\bfseries \emph{Keywords}}}%
+\def\keywords#1{\par\addvspace\medskipamount{\rightskip=0pt plus1cm
+\def\and{\ifhmode\unskip\nobreak\fi\ $\cdot$
+}\noindent\keywordname\enspace\ignorespaces#1\par}}
+\makeatother
+
+% Abstract
+\renewenvironment{abstract}
+  {\centerline{\large \bfseries \scshape Abstract}\begin{quote}}
+  {\end{quote}}
+
+% Hyperlinks
 \hypersetup{
   colorlinks=true,
   allcolors=blue,
@@ -13,120 +93,63 @@
   pdfsubject={[-doc.description-]},
   pdfauthor={\@author},
   pdfkeywords={[-doc.tags-]},
-  addtopdfcreator={written using the TU Delft Thesis Template}
 }
-\pagenumbering{gobble}
 
-% Use \replaceBS to replace backslashes in file paths with forward slashes. 
-% solution from https://tex.stackexchange.com/questions/213779/replace-every-backslash-in-a-string-with-a-forwardslash 
-
-\makeatletter
-\newcommand{\replaceBS}[2]{{\escapechar=`/ 
-  \xdef#2{\expandafter\zap@space\detokenize\expandafter{#1} \@empty}}}
-\makeatother
-
-% Cover image width
-\newcommand{\CoverWidth}{[- options.cover_width -]} % Set default
-
-% Default cover margin (vertical space between title and cover image)
-\newcommand{\CoverMargin}{[- options.cover_margin -]} % Set default
-
-% ---- Logo settings (from template options) ----
-\newif\ifThesisLogo
-\ThesisLogofalse          % default: no logo
-
-\newcommand{\marginTop}{[- options.margin_top -]} % margin top for document
-\newcommand{\marginBottom}{[- options.margin_bottom -]} % margin bottom for document
-\newcommand{\marginLeft}{[- options.margin_left -]} % margin left for document
-\newcommand{\marginRight}{[- options.margin_right -]} % margin right for document
-
-\newcommand{\paperSize}{[- options.papersize -]} % paper size, e.g. letterpaper, a4paper
-\newcommand{\showPageNumbers}{[- options.show_pagenumbers -]} % show page numbers: true/false
-
-\newcommand{\ThesisLogo}{}      % path after normalization
-\newcommand{\ThesisLogoWidth}{[- options.logo_width -]} % logo width, default is 1 cm
-
-
-% If a logo is provided in options, normalize its path and enable the flag
-[# if options.logo is defined #]
-  \ThesisLogotrue
-  \newcommand{\newLogoname}{}%
-  \replaceBS{[-options.logo-]}{\newLogoname}
-  \renewcommand{\ThesisLogo}{\newLogoname}
-[# endif #]
-
-
-% Extra information on title page
-\newcommand{\ThesisExtraInfo}{ [- options.extra_information -]}
-
-
-\usepackage{TUD-thesis-template}
-
+%%% Font: Latin Modern Typewriter Proportional
 \usepackage{iftex}
 \iftutex
-  % For XeLaTeX / LuaLaTeX (often used by MyST and Tectonic)
   \usepackage{fontspec}
-  % Use exact file names so Tectonic/XeLaTeX can find them in the TeXLive bundle
   \setmonofont{lmmonoprop10-regular.otf}[
     BoldFont=lmmonoproplt10-bold.otf,
     ItalicFont=lmmonoprop10-oblique.otf,
     BoldItalicFont=lmmonoproplt10-boldoblique.otf
   ]
 \else
-  % For pdfLaTeX
   \usepackage[T1]{fontenc}
   \renewcommand{\ttdefault}{lmvtt}
 \fi
-
-% Uncomment the line below to apply this font to the ENTIRE document (not just code blocks):
 \renewcommand{\familydefault}{\ttdefault}
 
-\usepackage{etoolbox}
-% Setup fancyhdr for custom headers and footers
+%%% Headers & footers
 \pagestyle{fancy}
-\fancyhf{} % Clear all headers and footers
+\fancyhf{}
 
-% Fix marks to include numbers and titles properly
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\quad #1}}
 
-% Odd pages: subsection on left, page number on right
-\fancyhead[OL]{\nouppercase{\rightmark}}
-\fancyhead[OR]{\thepage}
-% Even pages: page number on left, chapter (section) on right
+% Even pages: page number left, section name (no number) right
 \fancyhead[EL]{\thepage}
 \fancyhead[ER]{\nouppercase{\leftmark}}
-% Remove footer entirely
-\renewcommand{\footrulewidth}{0pt}
-% Keep header separator line for normal pages
+% Odd pages: subsection number + name left, page number right
+\fancyhead[OL]{\nouppercase{\rightmark}}
+\fancyhead[OR]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% Style for chapter start pages: no header, page number in footer
+% No header/footer on title page and section-start pages
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
 
-% Flag to skip the first \section (before abstract)
+%%% Sections start on odd pages with "intentionally left blank" filler
 \newtoggle{skipclearpage}
 \toggletrue{skipclearpage}
 
-% Custom \cleardoublepage to include "intentionally left blank"
 \makeatletter
 \renewcommand*{\cleardoublepage}{%
   \clearpage
   \if@twoside
     \ifodd\c@page\else
       \null
-      \vspace*{\fill}%
-      \begin{center}%
-        \textit{This page is intentionally left blank.}%
-      \end{center}%
-      \vspace{\fill}%
-      \thispagestyle{empty}%
-      \newpage%
+      \vspace*{\fill}
+      \begin{center}
+        \textit{This page is intentionally left blank.}
+      \end{center}
+      \vspace{\fill}
+      \thispagestyle{empty}
+      \newpage
     \fi
   \fi
 }
@@ -141,20 +164,18 @@
   \thispagestyle{plain}%
 }{}{}
 
-% Titlesec for chapter (section) formatting
-\usepackage{titlesec}
+%%% Section formatting: double rule separator
 \titleformat{\section}[block]
-  {\normalfont\Huge\bfseries} % Very large font size
+  {\normalfont\Huge\bfseries}
   {\thesection}
   {1em}
   {}
-  [\vspace{1ex}\titlerule\vspace{0.5ex}\titlerule\vspace{2ex}] % Double separator to the start of the text
+  [\vspace{1ex}\titlerule\vspace{0.5ex}\titlerule\vspace{2ex}]
 
-% Chapter-prefixed equation numbering (e.g., 1.1, 1.2, 2.1, ...)
+% Equation numbering per section
 \numberwithin{equation}{section}
 
-% Force figures to be placed exactly where they are in the source
-\usepackage{float}
+% Force figure placement
 \restylefloat{figure}
 \let\oldfigure\figure
 \let\endoldfigure\endfigure
@@ -164,40 +185,28 @@
   \endoldfigure%
 }
 
-\replaceBS{[-options.cover-]}{\newCovername}
-
+%%% Document metadata
 \title{[-doc.title-]}
-
+\author{[-doc.authors[0].name-]}
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
-\date{%
-  \ThesisExtraInfo\\[1.5em]
-  \displaydate{articleDate}\\[1.5em]
-}
-
-\author{
-\textsc{
-author: [-doc.authors[0].name-]%
-[# if doc.authors|length > 1 #]
-\\ supervisor: [-doc.authors[1].name-]%
-[# endif #]
-}}
+\date{\displaydate{articleDate}}
 
 \begin{document}
 
+% Title page
+\begin{titlepage}
+  \centering
+  \vspace*{\fill}
+  {\Huge\bfseries [-doc.title-]\par}
+  \vspace{2em}
+  {\Large [-doc.authors[0].name-]\par}
+  \vspace{1em}
+  {\large \displaydate{articleDate}\par}
+  \vspace*{\fill}
+\end{titlepage}
 
-\maketitle
-\vfill
-
-[# if options.cover #]
-  \vspace*{\CoverMargin} % margin from the title
-  \begin{center}
-    \includegraphics[width=\CoverWidth]{\newCovername}
-  \end{center}
-[# endif #]
-
-\vfill
-
-\newpage
+% Front matter
+\pagenumbering{gobble}
 
 [# if parts.abstract -#]
 \begin{abstract}
@@ -210,22 +219,15 @@ author: [-doc.authors[0].name-]%
 [# endif #]
 \clearpage
 
-% Default TOC depth
-\setcounter{tocdepth}{2}
-
-% Override via template variable
-[# if options.tocDepth is defined #]
-  \setcounter{tocdepth}{[- options.tocDepth -]}
-[# endif #]
-
 [# if options.showTOC #]
-\clearpage
+\setcounter{tocdepth}{[- options.tocDepth -]}
 \tableofcontents
+\clearpage
 [# endif #]
 
+% Main content
 \cleardoublepage
-\pagenumbering{\showPageNumbers}
-
+\pagenumbering{arabic}
 
 [-CONTENT-]
 
@@ -234,18 +236,7 @@ author: [-doc.authors[0].name-]%
 [-parts.acknowledgments-]
 [#- endif -#]
 
-[#- if options.link -#]
-% Optional footnote with a link back to the online version of your article
-\newcommand{\documentnote}[1]{{%
-  \let\thempfn\relax% Remove footnote number printing mechanism
-  \footnotetext[0]{\emph{#1}}% Print footnote text
-}}
-\documentnote{Available online at:\\ \href{[-options.link-]}{[-options.link-]}}
-[#- endif -#]
-
 [# if doc.bibliography #]
-
-
 \clearpage
 \bibliography{[- doc.bibliography | join(", ") -]}
 [# endif #]
