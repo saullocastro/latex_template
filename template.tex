@@ -41,19 +41,16 @@
 \newcommand{\marginLeft}{[- options.margin_left -]}
 \newcommand{\marginRight}{[- options.margin_right -]}
 
-\usepackage{geometry}
-\AtBeginDocument{
-  \newgeometry{
-    [- options.papersize -],
-    top=\marginTop,
-    bottom=\marginBottom,
-    left=\marginLeft,
-    right=\marginRight,
-    headheight=14pt,
-    headsep=25pt,
-    footskip=30pt
-  }
-}
+\usepackage[
+  [- options.papersize -],
+  top=\marginTop,
+  bottom=\marginBottom,
+  left=\marginLeft,
+  right=\marginRight,
+  headheight=14pt,
+  headsep=25pt,
+  footskip=30pt
+]{geometry}
 
 %%% Base setup
 \graphicspath{{.}}
