@@ -206,8 +206,9 @@
 [# endif #]
 
 % Title page (odd page)
-\thispagestyle{empty}
+[# if options.pdfcover #]
 \cleardoublepage
+[# endif #]
 \begin{titlepage}
   \centering
   \vspace*{\fill}
