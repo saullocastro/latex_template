@@ -32,6 +32,7 @@
 \usepackage{fancyhdr}
 \usepackage{etoolbox}
 \usepackage{titlesec}
+\usepackage{tikz}
 
 [-IMPORTS-]
 
@@ -41,12 +42,6 @@
 \newcommand{\marginLeft}{[- options.margin_left -]}
 \newcommand{\marginRight}{[- options.margin_right -]}
 
-[# if options.pdfcover #]
-\usepackage[
-  [- options.papersize -],
-  margin=0pt
-]{geometry}
-[# else #]
 \usepackage[
   [- options.papersize -],
   top=\marginTop,
@@ -57,7 +52,6 @@
   headsep=25pt,
   footskip=30pt
 ]{geometry}
-[# endif #]
 
 %%% Base setup
 \graphicspath{{.}}
@@ -203,17 +197,10 @@
 % Cover page (full-page image)
 [# if options.pdfcover #]
 \thispagestyle{empty}
-\noindent\includegraphics[width=\paperwidth,height=\paperheight]{[-options.pdfcover-]}
-\newgeometry{
-  [- options.papersize -],
-  top=\marginTop,
-  bottom=\marginBottom,
-  left=\marginLeft,
-  right=\marginRight,
-  headheight=14pt,
-  headsep=25pt,
-  footskip=30pt
-}
+\begin{tikzpicture}[remember picture, overlay]
+  \node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{[-options.pdfcover-]}};
+\end{tikzpicture}
+\null\newpage
 [# endif #]
 
 % Title page (odd page)
