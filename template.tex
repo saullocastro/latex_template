@@ -60,8 +60,8 @@
 \setcitestyle{authoryear,open={(},close={)},semicolon,aysep={,}}
 \widowpenalty=10000
 \clubpenalty=10000
-\setlength{\parindent}{\z@}
-\setlength{\parskip}{5.5\p@}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt}
 
 % Callout environment (used by MyST admonitions)
 \newmdenv[linewidth=2pt,linecolor=CornflowerBlue,topline=false,bottomline=false,rightline=false,leftline=true,skipabove=20,skipbelow=20,leftmargin=20,rightmargin=20]{callout}
@@ -86,9 +86,9 @@
 \hypersetup{
   colorlinks=true,
   allcolors=blue,
-  pdftitle={\@title},
+  pdftitle={[-doc.title-]},
   pdfsubject={[-doc.description-]},
-  pdfauthor={\@author},
+  pdfauthor={[-doc.authors[0].name-]},
   pdfkeywords={[-doc.tags-]},
 }
 
