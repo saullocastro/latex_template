@@ -41,6 +41,12 @@
 \newcommand{\marginLeft}{[- options.margin_left -]}
 \newcommand{\marginRight}{[- options.margin_right -]}
 
+[# if options.pdfcover #]
+\usepackage[
+  [- options.papersize -],
+  margin=0pt
+]{geometry}
+[# else #]
 \usepackage[
   [- options.papersize -],
   top=\marginTop,
@@ -51,6 +57,7 @@
   headsep=25pt,
   footskip=30pt
 ]{geometry}
+[# endif #]
 
 %%% Base setup
 \graphicspath{{.}}
@@ -196,10 +203,17 @@
 % Cover page (full-page image)
 [# if options.pdfcover #]
 \thispagestyle{empty}
-\newgeometry{margin=0pt}
 \noindent\includegraphics[width=\paperwidth,height=\paperheight]{[-options.pdfcover-]}
-\restoregeometry
-\newpage
+\newgeometry{
+  [- options.papersize -],
+  top=\marginTop,
+  bottom=\marginBottom,
+  left=\marginLeft,
+  right=\marginRight,
+  headheight=14pt,
+  headsep=25pt,
+  footskip=30pt
+}
 [# endif #]
 
 % Title page (odd page)
