@@ -196,10 +196,18 @@
 
 \begin{document}
 
-% Cover page (reserved for full-page image)
+% Cover page (full-page image)
+[# if options.pdfcover #]
+\thispagestyle{empty}
+\newgeometry{margin=0pt}
+\noindent\includegraphics[width=\paperwidth,height=\paperheight]{[-options.pdfcover-]}
+\restoregeometry
+\newpage
+[# else #]
 \thispagestyle{empty}
 \null
 \newpage
+[# endif #]
 
 % Title page (odd page)
 \thispagestyle{empty}

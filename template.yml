@@ -23,6 +23,12 @@ doc:
   - id: keywords
   - id: bibliography
 options:
+  # Cover image
+  - id: pdfcover
+    type: file
+    description: |
+      Full-page cover image for the first page (e.g. "images/cover.png")
+
   # TOC settings
   - id: showTOC
     type: boolean
