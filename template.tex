@@ -176,11 +176,23 @@
 
 %%% Section formatting: double rule separator
 \titleformat{\section}[block]
-  {\normalfont\Huge\bfseries}
+  {\raggedright\normalfont\Huge\bfseries}
   {\thesection}
   {1em}
   {}
   [\vspace{1ex}\titlerule\vspace{0.5ex}\titlerule\vspace{2ex}]
+
+\titleformat{\subsection}[block]
+  {\raggedright\normalfont\LARGE\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+
+\titleformat{\subsubsection}[block]
+  {\raggedright\normalfont\Large\bfseries}
+  {\thesubsubsection}
+  {1em}
+  {}
 
 % Equation numbering per section
 \numberwithin{equation}{section}
