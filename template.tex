@@ -108,6 +108,13 @@
   \renewcommand{\ttdefault}{lmvtt}
 \fi
 \renewcommand{\familydefault}{\ttdefault}
+
+% Monospaced fonts have zero interword stretch/shrink, preventing justification.
+% Hook into \selectfont so every size/shape gets adjustable word spacing.
+\apptocmd{\selectfont}{%
+  \fontdimen3\font=.25\fontdimen2\font  % interword stretch = 25% of space
+  \fontdimen4\font=.15\fontdimen2\font  % interword shrink  = 15% of space
+}{}{}
 \justifying
 
 %%% Headers & footers
